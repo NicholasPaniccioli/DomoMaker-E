@@ -1,6 +1,5 @@
 const models = require('../models');
 
-const Domo = models.Domo;
 const Account = models.Account;
 
 const loginPage = (req, res) => {
@@ -67,7 +66,7 @@ const signup = (request, response) => {
 
         savePromise.then(() =>{
             req.session.account = Account.AccountModel.toAPI(newAccount);
-            res.json({redirect: '/maker'});
+            return res.json({redirect: '/maker'});
         });
 
         savePromise.catch((err) => {

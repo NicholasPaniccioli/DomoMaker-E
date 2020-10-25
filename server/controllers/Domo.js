@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const _ = require('underscore');
 
+const models = require ('../models');
+const Domo = models.Domo;
+
 let DomoModel = {};
 
 const convertId = mongoose.Types.ObjectId;
@@ -40,7 +43,7 @@ DomoSchema.statics.toAPI = (doc) => ({
 
 DomoSchema.statics.findByOwner = (ownerId, callback) => {
     const search = {
-        owner: convertId(ownerId);
+        owner: convertId(ownerId),
     };
 
     return DomoModel.find(search).select('name age').lean().exec(callback);
@@ -52,6 +55,36 @@ const makerPage = (req, res) => {
     res.render('app');
 };
 
+const makeDomo = (req, res) => {
+    if(!req.body.name || !req.body.age) {
+        return res.status(400).json({error: 'RAWR! Both name and age are required'});
+    }
+
+    const domoData = {
+        name: req.body.name,
+        age: req.body.age,
+        owner: req.session.account._id,
+    };
+
+    const newDomo = new Domo.DomoModel(domoData);
+
+    const domoPromise = newDomo.save();
+
+    domoPromise.then(() => res.json({ redirect: '/maker'}));
+
+    domoPromise.catch((err) => {
+        console.log(err);
+        if(err.code === 11000){
+            return res.status(400).json({error: 'Domo already exists'});
+        }
+
+        return res.status(400).json({error: 'An error occurred'});
+    });
+
+    return domoPromise;
+};
+
 module.exports.DomoModel = DomoModel;
 module.exports.DomoSchema = DomoSchema;
 module.exports.makerPage = makerPage;
+module.exports.make = makeDomo;
