@@ -45,7 +45,7 @@ const signup = (request, response) => {
         return res.status(400).json({error: 'RAWR! All fields are required'});
     }
 
-    if(res.body.pass !== req.body.pass2){
+    if(req.body.pass !== req.body.pass2){
         return res.status(400).json({error: 'RAWR! Passwords do not match'});
     }
 
