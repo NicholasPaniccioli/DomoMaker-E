@@ -75,16 +75,16 @@ const SignupWindow = (props) => {
 };
 
 const createLoginWindow = (csrf) => {
-    ReactDom.render(
+    ReactDOM.render(
         <LoginWindow csrf={csrf} />,
-        document.querySelector("content")
+        document.querySelector("#content")
     );
 };
 
 const createSignupWindow = (csrf) => {
-    ReactDom.render(
+    ReactDOM.render(
         <SignupWindow csrf={csrf} />,
-        document.querySelector("content")
+        document.querySelector("#content")
     );
 };
 
@@ -115,4 +115,4 @@ const getToken = () => {
 
 $(document).ready(function(){
     getToken();
-})
+});
