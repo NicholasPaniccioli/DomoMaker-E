@@ -40,7 +40,7 @@ var DomoForm = function DomoForm(props) {
     name: "age",
     placeholder: "Domo Age"
   }), /*#__PURE__*/React.createElement("input", {
-    id: "hidden",
+    type: "hidden",
     name: "_csrf",
     value: props.csrf
   }), /*#__PURE__*/React.createElement("input", {
