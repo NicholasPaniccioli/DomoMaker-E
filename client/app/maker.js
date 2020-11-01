@@ -36,7 +36,7 @@ const DomoForm = (props) => {
 };
 
 const DomoList = function(props) {
-    if(props.domo.length ===0){
+    if(props.domos.length === 0){
         return(
             <div className="domoList">
                 <h3 className="emptyDomo">No Domos yet</h3>
@@ -71,11 +71,11 @@ const loadDomosFromServer = () => {
 
 const setup = function(csrf) {
     ReactDOM.render(
-        <DomoFrom csrf={csrf} />, document.querySelector("#makeDomo")
+        <DomoForm csrf={csrf} />, document.querySelector("#makeDomo")
     );
 
     ReactDOM.render(
-        <DomoFrom domos={[]} />, document.querySelector("#domos")
+        <DomoList domos={[]} />, document.querySelector("#domos")
     );
 
     loadDomosFromServer();

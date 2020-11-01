@@ -51,7 +51,7 @@ var DomoForm = function DomoForm(props) {
 };
 
 var DomoList = function DomoList(props) {
-  if (props.domo.length === 0) {
+  if (props.domos.length === 0) {
     return /*#__PURE__*/React.createElement("div", {
       className: "domoList"
     }, /*#__PURE__*/React.createElement("h3", {
@@ -87,10 +87,10 @@ var loadDomosFromServer = function loadDomosFromServer() {
 };
 
 var setup = function setup(csrf) {
-  ReactDOM.render( /*#__PURE__*/React.createElement(DomoFrom, {
+  ReactDOM.render( /*#__PURE__*/React.createElement(DomoForm, {
     csrf: csrf
   }), document.querySelector("#makeDomo"));
-  ReactDOM.render( /*#__PURE__*/React.createElement(DomoFrom, {
+  ReactDOM.render( /*#__PURE__*/React.createElement(DomoList, {
     domos: []
   }), document.querySelector("#domos"));
   loadDomosFromServer();
@@ -114,7 +114,7 @@ var handleError = function handleError(message) {
   }, 350);
 };
 
-var redirect = function redirect(message) {
+var redirect = function redirect(response) {
   $("#domoMessage").animate({
     width: 'hide'
   }, 350);

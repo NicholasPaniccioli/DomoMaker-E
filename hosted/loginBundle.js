@@ -155,7 +155,7 @@ var handleError = function handleError(message) {
   }, 350);
 };
 
-var redirect = function redirect(message) {
+var redirect = function redirect(response) {
   $("#domoMessage").animate({
     width: 'hide'
   }, 350);
