@@ -30,7 +30,6 @@ const DomoForm = (props) => {
             <input id="domoAge" type="text" name="age" placeholder="Domo Age"/>
             <input type="hidden" name="_csrf" value={props.csrf}/>
             <input className = "makeDomoSubmit" type="submit" value="Make Domo"/>
-
         </form>
     );
 };

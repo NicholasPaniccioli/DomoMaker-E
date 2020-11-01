@@ -1,4 +1,3 @@
-const { get } = require('mongoose');
 const controllers = require('./controllers');
 const mid = require('./middleware');
 
