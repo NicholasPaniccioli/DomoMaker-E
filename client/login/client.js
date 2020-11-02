@@ -74,6 +74,27 @@ const SignupWindow = (props) => {
     );
 };
 
+// const ThirdWindow = (props) => {
+//     return (
+//         <form id="thirdForm" name="thirdForm"
+//         onSubmit={handleSignup}
+//         action="/third"
+//         method="POST"
+//         className="mainForm"
+//     >
+//     <label htmlFor="username">Welcome to the third page: </label>
+//     <input id="user" type="text" name="username" placeholder="username"/>
+//     {/* <label htmlFor="pass">Password: </label>
+//     <input id="pass" type="password" name="pass" placeholder="password"/>
+//     <label htmlFor="pass2">Password: </label>
+//     <input id="pass2" type="password" name="pass2" placeholder="retype password"/>
+//     <input type="hidden" name="_csrf" value={props.csrf}/>
+//     <input className="formSubmit" type="submit" value="Sign Up"/> */}
+
+//     </form>
+//     );
+// };
+
 const createLoginWindow = (csrf) => {
     ReactDOM.render(
         <LoginWindow csrf={csrf} />,
@@ -88,9 +109,17 @@ const createSignupWindow = (csrf) => {
     );
 };
 
+// const createThirdWindow = (csrf) => {
+//     ReactDOM.render(
+//         <ThirdWindow csrf={csrf} />,
+//         document.querySelector("#content")
+//     );
+// };
+
 const setup = (csrf) => {
     const loginButton = document.querySelector("#loginButton");
     const signupButton = document.querySelector("#signupButton");
+    // const thirdButton = document.querySelector("#thirdButton");
 
     signupButton.addEventListener("click", (e) => {
         e.preventDefault();
@@ -103,6 +132,12 @@ const setup = (csrf) => {
         createLoginWindow(csrf);
         return false;
     });
+
+    // thirdButton.addEventListener("click", (e) => {
+    //     e.preventDefault();
+    //     createThirdWindow(csrf);
+    //     return false;
+    // });
 
     createLoginWindow(csrf);
 };

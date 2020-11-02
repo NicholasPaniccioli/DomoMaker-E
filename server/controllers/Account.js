@@ -77,6 +77,11 @@ const signup = (request, response) => {
     });
 };
 
+// const third = (request, response) => {
+//     const req = request;
+//     const res = response;
+// }
+
 const getToken  = (request, response) => {
     const req = request;
     const res  = response;
